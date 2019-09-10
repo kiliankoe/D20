@@ -29,11 +29,19 @@ final class D20Tests: XCTestCase {
         let _1d20 = Roll("1d20")
         XCTAssertEqual(_1d20?.max, 20)
 
-        let _2d20 = Roll("2d20")
-        XCTAssertEqual(_2d20?.max, 40)
+//        let _d6 = Roll("d6")
+//        XCTAssertEqual(_d6?.max, 6)
+//
+//        let _2d20 = Roll("2d20")
+//        XCTAssertEqual(_2d20?.max, 40)
+//
+//        let _1d8plus2 = Roll("1d8+2")
+//        XCTAssertEqual(_1d8plus2?.max, 10)
+//
+//        let _2d4times2 = Roll("2d4*2")
+//        XCTAssertEqual(_2d4times2?.max, 16)
 
-        let _1d8plus2 = Roll("1d8+2")
-        XCTAssertEqual(_1d8plus2?.max, 10)
+        // Add some more examples from https://en.wikipedia.org/wiki/Dice_notation
     }
 
 
