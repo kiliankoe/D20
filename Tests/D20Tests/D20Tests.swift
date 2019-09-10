@@ -14,33 +14,33 @@ final class D20Tests: XCTestCase {
     func testSimpleDieRoll() {
         let die = D(6)
         for _ in 0..<20 {
-            let roll = die.roll()
-            XCTAssertEqual(roll.max, 6)
-            XCTAssertEqual(roll.half, 3)
-            XCTAssert((1...6).contains(roll.result))
+            XCTAssert((1...6).contains(die.roll().result))
         }
     }
 
     func testMultipleDieRoll() {
-        // 1d8 + 3d6
-        let dice = [D(8), D(6), D(6), D(6)]
+        let dice = [D(8), D(6), D(6)]
         for _ in 0..<20 {
-            let roll = dice.roll()
-            XCTAssertEqual(roll.max, 26)
-            XCTAssertEqual(roll.half, 13)
-            XCTAssert((1...26).contains(roll.result))
+            XCTAssert((1...20).contains(dice.roll().result))
         }
     }
 
     func testFormulaParsing() {
-        let roll = D20.roll(formula: "1d20")
-        XCTAssertEqual(roll.max, 20)
+        let _1d20 = Roll("1d20")
+        XCTAssertEqual(_1d20.max, 20)
+
+        let _2d20 = Roll("2d20")
+        XCTAssertEqual(_2d20.max, 40)
+
+        let _1d8plus2 = Roll("1d8+2")
+        XCTAssertEqual(_1d8plus2.max, 10)
     }
+
 
     static var allTests = [
         ("testDieAverage", testDieAverage),
         ("testSimpleDieRoll", testSimpleDieRoll),
         ("testMultipleDieRoll", testMultipleDieRoll),
-        ("testMultipleDieRoll", testMultipleDieRoll),
+        ("testFormulaParsing", testFormulaParsing),
     ]
 }

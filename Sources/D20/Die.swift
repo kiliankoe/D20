@@ -9,16 +9,18 @@ public struct D {
         Double(faces + 1) / 2
     }
 
-    public func roll() -> Roll {
-        Roll(dice: [self], result: Int.random(in: 1...faces), max: faces, half: faces / 2)
+    public func roll() -> RollResult {
+        let roll = Int.random(in: 1...faces)
+        return RollResult(description: "\(roll)", result: roll)
     }
 }
 
 public extension Array where Element == D {
-    func roll() -> Roll {
+    func roll() -> RollResult {
         let rolls = self.map { $0.roll() }
+
+        let description = rolls.map { $0.description }.joined(separator: " + ")
         let result = rolls.reduce(0) { $0 + $1.result }
-        let max = rolls.reduce(0) { $0 + $1.max }
-        return Roll(dice: self, result: result, max: max, half: max / 2)
+        return RollResult(description: description, result: result)
     }
 }
