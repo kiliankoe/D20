@@ -2,14 +2,13 @@ import Parsel
 
 public struct Roll {
     public let formula: String
+//    private let term: Foo
 
-    public init(_ formula: String) {
+    public init?(_ formula: String) {
+        guard !formula.isEmpty else { return nil }
         self.formula = formula
 
-//        let rollParser = Parser<String, Roll> { input in
-//            return .success(result: Roll, rest: input)
-//        }
-//        let result = try! rollParser.parse(formula).unwrap()
+
     }
 
     public var max: Int {
@@ -32,10 +31,4 @@ public struct Roll {
 public struct RollResult {
     public let description: String
     public let result: Int
-}
-
-extension RollResult: CustomStringConvertible {
-    public var description: String {
-        String(result)
-    }
 }

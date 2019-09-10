@@ -27,13 +27,13 @@ final class D20Tests: XCTestCase {
 
     func testFormulaParsing() {
         let _1d20 = Roll("1d20")
-        XCTAssertEqual(_1d20.max, 20)
+        XCTAssertEqual(_1d20?.max, 20)
 
         let _2d20 = Roll("2d20")
-        XCTAssertEqual(_2d20.max, 40)
+        XCTAssertEqual(_2d20?.max, 40)
 
         let _1d8plus2 = Roll("1d8+2")
-        XCTAssertEqual(_1d8plus2.max, 10)
+        XCTAssertEqual(_1d8plus2?.max, 10)
     }
 
 
