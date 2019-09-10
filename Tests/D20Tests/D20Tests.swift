@@ -32,9 +32,15 @@ final class D20Tests: XCTestCase {
         }
     }
 
+    func testFormulaParsing() {
+        let roll = D20.roll(formula: "1d20")
+        XCTAssertEqual(roll.max, 20)
+    }
+
     static var allTests = [
         ("testDieAverage", testDieAverage),
         ("testSimpleDieRoll", testSimpleDieRoll),
-        ("testMultipleRolls", testMultipleRolls),
+        ("testMultipleDieRoll", testMultipleDieRoll),
+        ("testMultipleDieRoll", testMultipleDieRoll),
     ]
 }
