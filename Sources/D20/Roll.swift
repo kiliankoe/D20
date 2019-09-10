@@ -4,3 +4,9 @@ public struct Roll {
     public let max: Int
     public let half: Int
 }
+
+extension Roll: CustomStringConvertible {
+    public var description: String {
+        "\(result) (max: \(max), half: \(half))"
+    }
+}

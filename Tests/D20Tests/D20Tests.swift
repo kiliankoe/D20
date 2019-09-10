@@ -12,8 +12,8 @@ final class D20Tests: XCTestCase {
     }
 
     func testSimpleDieRoll() {
+        let die = D(6)
         for _ in 0..<20 {
-            let die = D(6)
             let roll = die.roll()
             XCTAssertEqual(roll.max, 6)
             XCTAssertEqual(roll.half, 3)
@@ -21,7 +21,20 @@ final class D20Tests: XCTestCase {
         }
     }
 
+    func testMultipleDieRoll() {
+        // 1d8 + 3d6
+        let dice = [D(8), D(6), D(6), D(6)]
+        for _ in 0..<20 {
+            let roll = dice.roll()
+            XCTAssertEqual(roll.max, 26)
+            XCTAssertEqual(roll.half, 13)
+            XCTAssert((1...26).contains(roll.result))
+        }
+    }
+
     static var allTests = [
+        ("testDieAverage", testDieAverage),
         ("testSimpleDieRoll", testSimpleDieRoll),
+        ("testMultipleRolls", testMultipleRolls),
     ]
 }
