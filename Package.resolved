@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "Parsel",
-        "repositoryURL": "https://github.com/BenchR267/Parsel",
+        "package": "Regex",
+        "repositoryURL": "https://github.com/sharplet/Regex",
         "state": {
           "branch": null,
-          "revision": "501db286265e62867b42851cce4a2fa914eac43f",
-          "version": "3.0.2"
+          "revision": "a819aed0e9555268c29a62500fe6fb781ae7f57d",
+          "version": "2.1.0"
         }
       }
     ]
