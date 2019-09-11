@@ -1,5 +1,5 @@
 import XCTest
-import D20
+@testable import D20
 
 final class D20Tests: XCTestCase {
     func testDieAverage() {
@@ -14,41 +14,37 @@ final class D20Tests: XCTestCase {
     func testSimpleDieRoll() {
         let die = D(6)
         for _ in 0..<20 {
-            XCTAssert((1...6).contains(die.roll().result))
+            XCTAssert((1...6).contains(die.roll()))
         }
     }
 
     func testMultipleDieRoll() {
         let dice = [D(8), D(6), D(6)]
         for _ in 0..<20 {
-            XCTAssert((1...20).contains(dice.roll().result))
+            XCTAssert((1...20).contains(dice.roll()))
         }
     }
 
     func testFormulaParsing() {
         let _1d20 = Roll("1d20")
         XCTAssertEqual(_1d20?.max, 20)
-        XCTAssertEqual(_1d20?.roll(mode: .max).description, "20")
 
         let _d6 = Roll("d6")
         XCTAssertEqual(_d6?.max, 6)
-        XCTAssertEqual(_d6?.roll(mode: .max).description, "6")
 
         let _2d20 = Roll("2d20")
         XCTAssertEqual(_2d20?.max, 40)
-        XCTAssertEqual(_2d20?.roll(mode: .max).description, "40")
 
         let _1d8plus2 = Roll("1d8+2")
         XCTAssertEqual(_1d8plus2?.max, 10)
-        XCTAssertEqual(_1d8plus2?.roll(mode: .max).description, "8+2")
 
         let _2d4times2 = Roll("2d4*2")
         XCTAssertEqual(_2d4times2?.max, 16)
-        XCTAssertEqual(_2d4times2?.roll(mode: .max).description, "8*2")
 
         let _1d4times2d10plus1d3 = Roll("1d4*(2d10+1d3)")
         XCTAssertEqual(_1d4times2d10plus1d3?.max, 92)
-        XCTAssertEqual(_1d4times2d10plus1d3?.roll(mode: .max).description, "4*(20+3)")
+        let maxExpression = _1d4times2d10plus1d3?.replaceDice { String($0 * D($1).max) }
+        XCTAssertEqual(maxExpression, "4*(20+3)")
 
         // Add some more examples from https://en.wikipedia.org/wiki/Dice_notation
     }
