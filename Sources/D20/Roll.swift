@@ -47,8 +47,6 @@ public struct Roll {
             copy = copy.replacingFirst(matching: dieRegex, with: String(results[idx]))
         }
 
-        print(copy)
-
         return copy
     }
 }
