@@ -21,10 +21,3 @@ public struct D {
         Int.random(in: 1...faces)
     }
 }
-
-extension Array where Element == D {
-    func roll() -> Int {
-        self.map { $0.roll() }
-            .reduce(0, +)
-    }
-}

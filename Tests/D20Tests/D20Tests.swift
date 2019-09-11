@@ -1,5 +1,5 @@
 import XCTest
-@testable import D20
+import D20
 
 final class D20Tests: XCTestCase {
     func testDieAverage() {
@@ -15,13 +15,6 @@ final class D20Tests: XCTestCase {
         let die = D(6)
         for _ in 0..<20 {
             XCTAssert((1...6).contains(die.roll()))
-        }
-    }
-
-    func testMultipleDieRoll() {
-        let dice = [D(8), D(6), D(6)]
-        for _ in 0..<20 {
-            XCTAssert((1...20).contains(dice.roll()))
         }
     }
 
@@ -52,7 +45,6 @@ final class D20Tests: XCTestCase {
     static var allTests = [
         ("testDieAverage", testDieAverage),
         ("testSimpleDieRoll", testSimpleDieRoll),
-        ("testMultipleDieRoll", testMultipleDieRoll),
         ("testFormulaParsing", testFormulaParsing),
     ]
 }
