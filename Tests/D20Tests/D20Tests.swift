@@ -46,9 +46,12 @@ final class D20Tests: XCTestCase {
         XCTAssertEqual(_2d4times2?.max, 16)
         XCTAssertEqual(_2d4times2?.roll(mode: .max).description, "8*2")
 
+        let _1d4times2d10plus1d3 = Roll("1d4*(2d10+1d3)")
+        XCTAssertEqual(_1d4times2d10plus1d3?.max, 92)
+        XCTAssertEqual(_1d4times2d10plus1d3?.roll(mode: .max).description, "4*(20+3)")
+
         // Add some more examples from https://en.wikipedia.org/wiki/Dice_notation
     }
-
 
     static var allTests = [
         ("testDieAverage", testDieAverage),
