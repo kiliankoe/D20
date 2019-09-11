@@ -42,12 +42,13 @@ public struct Roll {
             let dice = Array<D>(repeating: D(value), count: diceCount)
             return dice.roll(mode: mode).result
         }
-        var copy = formula
-        for (idx, match) in matches.enumerated() {
-            copy = copy.replacingFirst(matching: dieRegex, with: String(results[idx]))
-        }
 
-        return copy
+        var replacedFormula = formula
+        for idx in matches.indices {
+            let die = String(Int(results[idx]))
+            replacedFormula = replacedFormula.replacingFirst(matching: dieRegex, with: die)
+        }
+        return replacedFormula
     }
 }
 
