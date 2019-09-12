@@ -9,11 +9,11 @@ Need to evaluate [dice notation](https://en.wikipedia.org/wiki/Dice_notation) in
 ### Examples
 
 ```swift
-let roll = Roll("1d20").roll()
+let roll = Roll("1d20")!.roll()
 roll.result
 // $R0: Int = 18
 
-let roll = Roll("3d8+1d6").roll()
+let roll = Roll("3d8+1d6")!.roll()
 roll.result
 // $R0: Int = 19
 roll.expression

@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "MathParser",
+        "repositoryURL": "https://github.com/kiliankoe/DDMathParser",
+        "state": {
+          "branch": null,
+          "revision": "86640bb9907b91c00f825090e0b4606e61270da2",
+          "version": "3.0.1"
+        }
+      },
+      {
         "package": "Regex",
         "repositoryURL": "https://github.com/sharplet/Regex",
         "state": {

@@ -1,12 +1,14 @@
-import class Foundation.NSExpression
 import Regex
+import MathParser
 
 public struct Roll {
     public let formula: String
 
     public init?(_ formula: String) {
-        guard !formula.isEmpty else { return nil }
         self.formula = formula
+
+        let maxExpr = replaceDice { String($0 * D($1).max) }
+        guard let _ = try? maxExpr.evaluate() else { return nil }
     }
 
     /// The maximum value this formula can roll.
@@ -14,7 +16,7 @@ public struct Roll {
         let expr = replaceDice { count, value in
             String(count * D(value).max)
         }
-        return expr.eval()
+        return Int(try! expr.evaluate())
     }
 
     /// Half of the maximum this formula can roll.
@@ -22,7 +24,7 @@ public struct Roll {
         let expr = replaceDice { count, value in
             String(count * D(value).half)
         }
-        return expr.eval()
+        return Int(try! expr.evaluate())
     }
 
     /// The average value this formula can roll.
@@ -30,7 +32,7 @@ public struct Roll {
         let expr = replaceDice { count, value in
             String(Double(count) * D(value).average)
         }
-        return expr.eval()
+        return try! expr.evaluate()
     }
 
     /// Create a custom expression by replacing found dice with a chosen value.
@@ -38,7 +40,7 @@ public struct Roll {
     ///
     /// The following for example produces the output expression if all dice rolled their max value.
     /// ```swift
-    /// Roll("1d4*(2d10+1d3)").replaceDice { String($0 * D($1).max) }
+    /// Roll("1d4*(2d10+1d3)")!.replaceDice { String($0 * D($1).max) }
     /// // $R0: String = "4*(20+3)"
     /// ```
     public func replaceDice(with closure: (Int, Int) -> String) -> String {
@@ -78,7 +80,7 @@ public struct Roll {
                 .joined(separator: "+")
             }
         }
-        let result: Int = expression.eval()
+        let result = Int(try! expression.evaluate())
         return RollResult(expression: expression, result: result)
     }
 }
@@ -86,14 +88,4 @@ public struct Roll {
 public struct RollResult {
     public let expression: String
     public let result: Int
-}
-
-internal extension String {
-    func eval<T>() -> T {
-        let expression = NSExpression(format: self)
-        guard let result = expression.expressionValue(with: nil, context: nil) as? T else {
-            fatalError("Failed to compute expression.")
-        }
-        return result
-    }
 }

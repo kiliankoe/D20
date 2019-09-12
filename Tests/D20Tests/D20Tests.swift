@@ -42,9 +42,23 @@ final class D20Tests: XCTestCase {
         // Add some more examples from https://en.wikipedia.org/wiki/Dice_notation
     }
 
+    func testInvalidFormulae() {
+        let invalid = [
+            "",
+            "!",
+            "1d",
+            "5+(1",
+        ]
+
+        for formula in invalid {
+            XCTAssertNil(Roll(formula))
+        }
+    }
+
     static var allTests = [
         ("testDieAverage", testDieAverage),
         ("testSimpleDieRoll", testSimpleDieRoll),
         ("testFormulaParsing", testFormulaParsing),
+        ("testInvalidFormulae", testInvalidFormulae),
     ]
 }
