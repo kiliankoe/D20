@@ -88,4 +88,8 @@ public struct Roll {
 public struct RollResult {
     public let expression: String
     public let result: Int
+
+    public var half: Int {
+        return result / 2
+    }
 }
