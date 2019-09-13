@@ -90,6 +90,6 @@ public struct RollResult {
     public let result: Int
 
     public var half: Int {
-        return result / 2
+        result / 2
     }
 }
