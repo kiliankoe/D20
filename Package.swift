@@ -12,7 +12,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/sharplet/Regex", from: "2.1.0"),
         // Using a fork temporarily as the upstream package layout is currently incompatible.
-        .package(url: "https://github.com/kiliankoe/DDMathParser", from: "3.0.1"),
+        .package(url: "https://github.com/davedelong/DDMathParser", from: "3.1.0"),
     ],
     targets: [
         .target(

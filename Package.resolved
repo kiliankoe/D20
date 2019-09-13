@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "MathParser",
-        "repositoryURL": "https://github.com/kiliankoe/DDMathParser",
+        "repositoryURL": "https://github.com/davedelong/DDMathParser",
         "state": {
           "branch": null,
-          "revision": "86640bb9907b91c00f825090e0b4606e61270da2",
-          "version": "3.0.1"
+          "revision": "0a159109e2393c3e1db4e2b638009c82e6650b4d",
+          "version": "3.1.0"
         }
       },
       {
