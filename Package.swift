@@ -18,7 +18,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/sharplet/Regex", from: "2.1.0"),
         .package(url: "https://github.com/davedelong/DDMathParser", from: "3.1.0"),
-        .package(url: "https://github.com/apparata/CLIKit", from: "0.3.1"),
+        .package(url: "https://github.com/onevcat/Rainbow", from: "3.0.0"),
+        .package(url: "https://github.com/kiliankoe/CLISpinner", from: "0.4.0"),
     ],
     targets: [
         .target(
@@ -26,7 +27,7 @@ let package = Package(
             dependencies: ["Regex", "MathParser"]),
         .target(
             name: "CLI",
-            dependencies: ["D20", "CLIKit"]),
+            dependencies: ["D20", "Rainbow", "CLISpinner"]),
         .testTarget(
             name: "D20Tests",
             dependencies: ["D20"]),
