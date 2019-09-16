@@ -29,6 +29,31 @@ That's pretty much it, cheers 🍻
 
 
 
+### CLI
+
+This package also includes a small CLI to roll the dice directly in your terminal.
+
+```bash
+$ d20 2d6+4
+# 14 (6+4)+4
+
+$ alias dagger='d20 1d4+2'
+$ dagger
+# 6 (4)+2
+# CRIT!
+```
+
+
+
+Installing it is easy. Just run the following after cloning the repo.
+
+```bash
+$ swift build -c release
+$ cp .build/release/d20 /usr/local/bin/d20
+```
+
+
+
 #### Logo Credits
 
 [D20](https://thenounproject.com/search/?q=d20&i=2453700) by Lonnie Tapscott from the Noun Project

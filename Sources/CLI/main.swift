@@ -33,3 +33,7 @@ dice.stopAndClear()
 let result = roll.roll()
 
 print("\(String(result.result).bold) \(result.expression)")
+
+if result.result == roll.max {
+    print("CRIT!".red.bold)
+}
