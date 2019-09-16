@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CLIKit",
+        "repositoryURL": "https://github.com/apparata/CLIKit",
+        "state": {
+          "branch": null,
+          "revision": "7d326df1a775569b0ad2deb5bdd943a8c0b951b7",
+          "version": "0.3.1"
+        }
+      },
+      {
         "package": "MathParser",
         "repositoryURL": "https://github.com/davedelong/DDMathParser",
         "state": {
