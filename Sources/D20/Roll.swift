@@ -74,10 +74,10 @@ public struct Roll {
             if collapseSingle {
                 return String(count * D(value).roll())
             } else {
-                return Array<D>(repeating: D(value), count: count)
+                return "(" + Array<D>(repeating: D(value), count: count)
                 .map { $0.roll() }
                 .map(String.init)
-                .joined(separator: "+")
+                .joined(separator: "+") + ")"
             }
         }
         let result = Int(try! expression.evaluate())
