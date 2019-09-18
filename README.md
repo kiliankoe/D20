@@ -19,13 +19,14 @@ roll.result
 roll.expression
 // $R1: String = "1+6+7+5"
 
+// Percentage die shorthand is also supported.
+let roll = Roll("d%")
+
 D(20).average
 // $R0: Double = 10.5
 ```
 
 The rest of the API is pretty self-explanatory. `D`ice and `Roll`s have attributes for accessing the max, half and average values of their rolls. Use the `roll()` function to actually throw the dice on both of these types and get some random values. 
-
-That's pretty much it, cheers 🍻
 
 
 
@@ -41,6 +42,13 @@ $ alias dagger='d20 1d4+2'
 $ dagger
 # 6 (4)+2
 # CRIT!
+
+# Invoke it without an argument to enter REPL mode.
+$ d20
+> d4
+3 (3)
+> 2d4
+6 (2+4)
 ```
 
 
