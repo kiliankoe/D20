@@ -44,14 +44,19 @@ public struct Roll {
     /// // $R0: String = "4*(20+3)"
     /// ```
     public func replaceDice(with closure: (Int, Int) -> String) -> String {
-        let dieRegex = Regex(#"((\d+)?[dw](\d+))"#)
+        let dieRegex = Regex(#"((\d+)?[dw](\d+|%))"#)
         var replacedFormula = self.formula
         let matches = dieRegex.allMatches(in: replacedFormula)
         let results = matches.map { match -> String in
             assert(match.captures.count > 0)
             // These unwraps shouldn't fail since the Regex shouldn't match otherwise.
             let count = Int(match.captures[1] ?? "1")!
-            let value = Int(match.captures[2]!)!
+            var value = 0
+            if match.captures[2] == "%" {
+                value = 100
+            } else {
+                value = Int(match.captures[2]!)!
+            }
 
             return closure(count, value)
         }

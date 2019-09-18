@@ -39,6 +39,9 @@ final class D20Tests: XCTestCase {
         let maxExpression = _1d4times2d10plus1d3?.replaceDice { String($0 * D($1).max) }
         XCTAssertEqual(maxExpression, "4*(20+3)")
 
+        let percentage = Roll("d%")
+        XCTAssertEqual(percentage?.max, 100)
+
         // Add some more examples from https://en.wikipedia.org/wiki/Dice_notation
     }
 
